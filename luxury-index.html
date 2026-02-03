@@ -279,48 +279,69 @@
         }
         
         .hero-content {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: white;
+            position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 0 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-        
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat {
+            color: white;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
         }
         
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            display: block;
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            align-self: center;
         }
         
-        .rating {
+        .hero-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(4rem, 10vw, 6rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 0.9;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero-features {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .hero-feature i {
             color: var(--gold);
+            font-size: 1.25rem;
         }
         
         /* Section Styles */
@@ -629,20 +650,21 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Big Open Apartment</h1>
-            <p class="subtitle">Luxury Stay in Maribor, Slovenia</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">7</span>
-                    Guests
+            <div class="hero-badge">Best Seller</div>
+            <h1 class="hero-title">BIG OPEN</h1>
+            <p class="hero-subtitle">Spacious 90m² luxury apartment with expansive terrace and private garden</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-users"></i>
+                    <span>Up to 7 Guests</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">2</span>
-                    Bedrooms
+                <div class="hero-feature">
+                    <i class="fas fa-bed"></i>
+                    <span>2 Bedrooms</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-number rating">★ 4.67</span>
-                    <span>209 Reviews</span>
+                <div class="hero-feature">
+                    <i class="fas fa-star"></i>
+                    <span>4.67 Rating</span>
                 </div>
             </div>
         </div>
