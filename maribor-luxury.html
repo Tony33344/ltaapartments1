@@ -716,13 +716,125 @@
             display: none !important;
         }
         
-        /* Property Nav */
-        .property-nav {
-            display: flex;
+        /* Host Profile Section */
+        .host-section {
             background: var(--light);
-            padding: 0.25rem;
-            border-radius: 50px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+            padding: 5rem 2rem;
+            border-radius: 30px;
+            margin: 4rem auto;
+            max-width: 1000px;
+            box-shadow: var(--shadow);
+        }
+
+        .host-profile {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .host-image-container {
+            flex-shrink: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+        }
+
+        .host-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .host-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .host-badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .host-badge {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .host-bio {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* House Rules & Important Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--primary);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray);
+        }
+
+        .info-list i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .tourist-tax {
+            background: var(--gold-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .host-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            .host-badges {
+                justify-content: center;
+            }
         }
         
         .property-nav a {
@@ -951,6 +1063,7 @@
                     <li><a href="#properties">Properties</a></li>
                     <li><a href="#comparison">Compare</a></li>
                     <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#host">Host</a></li>
                     <li><a href="#booking">Book Now</a></li>
                 </ul>
                 <div class="nav-right">
@@ -1482,8 +1595,79 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="section booking-section">
+    <!-- Host & Information Section -->
+    <section id="host" class="section">
+        <div class="container">
+            <div class="host-section">
+                <div class="host-profile">
+                    <div class="host-image-container">
+                        <img src="jernej host.png" alt="Jernej - Your Host">
+                    </div>
+                    <div class="host-info">
+                        <div class="section-subtitle">Meet Your Host</div>
+                        <h3>Hosted by Jernej</h3>
+                        <div class="host-badges">
+                            <div class="host-badge"><i class="fas fa-star"></i> 1,131 Reviews</div>
+                            <div class="host-badge"><i class="fas fa-shield-alt"></i> 8 Years Hosting</div>
+                            <div class="host-badge"><i class="fas fa-language"></i> Speaks English</div>
+                        </div>
+                        <p class="host-bio">"Good vibes speak louder than words." I'm obsessed with breathwork, yoga, Pilates, and awareness. As your host, I'm dedicated to ensuring you have a perfect stay in Maribor. Whether you need local recommendations for wine trails or the best restaurants, I'm here to help.</p>
+                        <div class="host-badges">
+                            <span class="host-badge">Response rate: 97%</span>
+                            <span class="host-badge">Responds within an hour</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <!-- House Rules -->
+                <div class="info-card">
+                    <h4><i class="fas fa-clipboard-list"></i> House Rules</h4>
+                    <ul class="info-list">
+                        <li><i class="fas fa-clock"></i> Check-in: After 4:00 PM</li>
+                        <li><i class="fas fa-clock"></i> Checkout: Before 10:00 AM / 11:00 AM</li>
+                        <li><i class="fas fa-volume-mute"></i> Quiet hours: 11:00 PM - 7:00 AM</li>
+                        <li><i class="fas fa-smoking-ban"></i> No smoking</li>
+                        <li><i class="fas fa-glass-cheers"></i> No parties or events</li>
+                        <li><i class="fas fa-shoe-prints"></i> No shoes inside the house</li>
+                        <li><i class="fas fa-utensils"></i> Please do the dishes before leaving</li>
+                    </ul>
+                </div>
+
+                <!-- Safety & Property -->
+                <div class="info-card">
+                    <h4><i class="fas fa-shield-check"></i> Safety & Property</h4>
+                    <ul class="info-list">
+                        <li><i class="fas fa-sensor"></i> Carbon monoxide alarm installed</li>
+                        <li><i class="fas fa-bell"></i> Smoke alarm installed</li>
+                        <li><i class="fas fa-key"></i> Self check-in with lockbox</li>
+                        <li><i class="fas fa-parking"></i> Free parking on premises</li>
+                        <li><i class="fas fa-bolt"></i> EV charging available</li>
+                    </ul>
+                    <div class="tourist-tax">
+                        <strong><i class="fas fa-receipt"></i> Tourist Tax (Maribor):</strong><br>
+                        • Adults: 2.50€ /night/guest<br>
+                        • 7-18 years: 1.25€ /night/guest<br>
+                        • Under 7 years: Free
+                    </div>
+                </div>
+
+                <!-- Location Highlights -->
+                <div class="info-card">
+                    <h4><i class="fas fa-map-marked-alt"></i> Location Highlights</h4>
+                    <ul class="info-list">
+                        <li><i class="fas fa-wine-glass"></i> Near the famous Wine Trail</li>
+                        <li><i class="fas fa-pizza-slice"></i> 200m to top-rated Pizzeria</li>
+                        <li><i class="fas fa-shopping-basket"></i> 50m to Market Express</li>
+                        <li><i class="fas fa-bus"></i> 20m to Bus Stop</li>
+                        <li><i class="fas fa-skiing"></i> 15 min to Pohorje Ski Center</li>
+                    </ul>
+                    <a href="https://www.google.com/maps/place/LTE+Apartments/@46.5765952,15.6547946,17z" target="_blank" class="contact-btn" style="display: inline-block; margin-top: 1rem; width: 100%; text-align: center;">View on Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle">Reserve Your Stay</div>
