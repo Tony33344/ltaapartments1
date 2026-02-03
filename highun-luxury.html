@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Q Apartment | Maribor Luxury Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;900&family=Inter:wght@200;300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0a0a0a;
+            --gold: #d4af37;
+            --gold-light: #f4e5c2;
+            --accent: #c9302c;
+            --light: #fafafa;
+            --gray: #888;
+            --border: #e5e5e5;
+            --shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            overflow-x: hidden;
+            background: #fff;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .breadcrumb-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        
+        .breadcrumb .separator {
+            color: var(--gray);
+        }
+        
+        .breadcrumb .current {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-center a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-center a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-center a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .property-nav {
+            display: flex;
+            background: var(--light);
+            padding: 0.25rem;
+            border-radius: 50px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+        
+        .property-nav a {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            color: var(--gray);
+        }
+        
+        .property-nav a.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .contact-btn {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+        }
+        
+        .contact-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            margin-top: 80px;
+        }
+        
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            animation: slideShow 20s infinite;
+        }
+        
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(4rem, 10vw, 6rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 0.9;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero-features {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .hero-feature i {
+            color: var(--gold);
+            font-size: 1.25rem;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-subtitle {
+            color: var(--gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Property Info */
+        .property-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        
+        .property-description h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .property-description p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .property-highlights {
+            margin: 3rem 0;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .highlight-icon i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .highlight-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .highlight-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Gallery */
+        .property-gallery {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .gallery-main {
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-thumb {
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-thumb:hover,
+        .gallery-thumb.active {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+        
+        /* Amenities */
+        .amenities-section {
+            background: var(--light);
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .amenity-item:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+        }
+        
+        .amenity-icon {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .booking-section .section-title {
+            color: white;
+        }
+        
+        .booking-widget {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 4rem;
+            box-shadow: var(--shadow-hover);
+            color: var(--primary);
+        }
+        
+        .bentral-widget-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bentral-widget-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--accent) 100%);
+        }
+        
+        .bentral-widget-container h4 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .bentral-widget-container h4::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 5rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-brand h3 span {
+            color: var(--gold);
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 2;
+        }
+        
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Animations */
+        @keyframes slideShow {
+            0%, 25% { transform: translateX(0); }
+            25%, 50% { transform: translateX(-100%); }
+            50%, 75% { transform: translateX(-200%); }
+            75%, 100% { transform: translateX(-300%); }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .nav-center {
+                display: none;
+            }
+            
+            .property-info-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .property-gallery {
+                position: static;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .gallery-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="maribor-luxury.html">Home</a>
+            <span class="separator">/</span>
+            <a href="maribor-luxury.html#properties">Properties</a>
+            <span class="separator">/</span>
+            <span class="current">High Q Apartment</span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">MARIBOR <span>LUXURY</span></div>
+                <ul class="nav-center">
+                    <li><a href="maribor-luxury.html">Home</a></li>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="property-nav">
+                        <a href="luxury-index.html">Big Open</a>
+                        <a href="lteh-luxury.html">LTE High</a>
+                        <a href="highun-luxury.html" class="active">High Q</a>
+                    </div>
+                    <a href="#booking" class="contact-btn">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('images/highun/kitchen.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/highun/living room.avif');"></div>
+            <div class="hero-slide" style="background-image: url('images/highun/bedroom1.avif');"></div>
+            <div class="hero-slide" style="background-image: url('images/highun/bathroom.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Premium Apartment</div>
+            <h1 class="hero-title">HIGH Q</h1>
+            <p class="hero-subtitle">High-ceiling apartment near city center with designer kitchen, SMART TV, and outdoor terrace</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-tv"></i>
+                    <span>HBO Max & Disney+</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-users"></i>
+                    <span>Up to 6 Guests</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-star"></i>
+                    <span>4.53 Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Overview -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="property-info-grid">
+                <div class="property-description">
+                    <h3>High Q Apartment</h3>
+                    <p>Welcome to our high-ceiling apartment near the city center, offering self-check-in, adjustable lighting, and cozy bedrooms. Enjoy a designer kitchen, high-speed WiFi, SMART cable TV with premium channels, and an outdoor terrace. A market is just 50 steps away for your convenience.</p>
+                    
+                    <div class="property-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Premium Entertainment</h4>
+                                <p>SMART TV with HBO Max, Disney+, premium cable channels, and high-speed WiFi</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Designer Kitchen</h4>
+                                <p>Fully equipped modern kitchen with premium appliances and elegant finishes</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Unbeatable Location</h4>
+                                <p>50m to market, 200m to pizzeria, 1000m to supermarket, 5 min to city center</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-gallery">
+                    <div class="gallery-main" style="background-image: url('images/highun/kitchen.jpg');"></div>
+                    <div class="gallery-thumbnails">
+                        <div class="gallery-thumb active" style="background-image: url('images/highun/kitchen.jpg');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/bedroom1.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/bathroom.jpg');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/livingroom all.jpg');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/kitchen + table.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/bedroom2.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/living room.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/highun/bedroom1d.jpg');"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section amenities-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Photo Gallery</div>
+                <h2 class="section-title">Explore The Space</h2>
+            </div>
+            <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/kitchen.jpg');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/bedroom1.avif');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/bathroom.jpg');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/livingroom all.jpg');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/kitchen + table.avif');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/bedroom2.avif');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Luxury Included</div>
+                <h2 class="section-title">Apartment Amenities</h2>
+            </div>
+            
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div>
+                        <h4>SMART TV</h4>
+                        <p>HBO Max, Disney+</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div>
+                        <h4>High-Speed WiFi</h4>
+                        <p>Free throughout</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-kitchen-set"></i>
+                    </div>
+                    <div>
+                        <h4>Designer Kitchen</h4>
+                        <p>Premium appliances</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div>
+                        <h4>Outdoor Terrace</h4>
+                        <p>Relaxation space</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div>
+                        <h4>Air Conditioning</h4>
+                        <p>Climate control</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div>
+                        <h4>Free Parking</h4>
+                        <p>On premises</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4>EV Charger</h4>
+                        <p>Electric vehicle</p>
+                    </div>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-dog"></i>
+                    </div>
+                    <div>
+                        <h4>Pet Friendly</h4>
+                        <p>All pets welcome</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section booking-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Reserve Your Stay</div>
+                <h2 class="section-title">Book High Q Apartment</h2>
+            </div>
+            
+            <div class="booking-widget">
+                <div class="bentral-widget-container">
+                    <h4>Select Your Dates</h4>
+                    <p><em>Add High Q price list widget code here</em></p>
+                </div>
+                
+                <div class="bentral-widget-container">
+                    <h4>Availability Calendar</h4>
+                    <p><em>Add High Q calendar widget code here</em></p>
+                </div>
+                
+                <div class="bentral-widget-container">
+                    <h4>Complete Your Reservation</h4>
+                    <p><em>Add High Q booking widget code here</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>MARIBOR <span>LUXURY</span></h3>
+                <p>Experience the pinnacle of luxury accommodation in Maribor. Our exclusive collection of premium apartments offers unparalleled comfort, style, and convenience.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="maribor-luxury.html">All Properties</a></li>
+                    <li><a href="luxury-index.html">Big Open</a></li>
+                    <li><a href="lteh-luxury.html">LTE High</a></li>
+                    <li><a href="highun-luxury.html">High Q</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Properties</h4>
+                <ul>
+                    <li><a href="luxury-index.html">Big Open (7 guests)</a></li>
+                    <li><a href="lteh-luxury.html">LTE High (6 guests)</a></li>
+                    <li><a href="highun-luxury.html">High Q (6 guests)</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hosted by Jernej</li>
+                    <li>8 years hosting</li>
+                    <li>24/7 support</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Maribor Luxury Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery thumbnail switching
+        document.querySelectorAll('.gallery-thumb').forEach((thumb, index, thumbs) => {
+            thumb.addEventListener('click', function() {
+                thumbs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const mainImage = this.closest('.property-gallery').querySelector('.gallery-main');
+                mainImage.style.backgroundImage = this.style.backgroundImage;
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
