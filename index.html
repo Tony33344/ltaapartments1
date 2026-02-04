@@ -97,6 +97,11 @@
             color: var(--gold);
         }
         
+        .logo-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .nav-center {
             display: flex;
             gap: 2rem;
@@ -1070,7 +1075,7 @@
             bottom: 0;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            z-index: 9999;
+            z-index: 10000;
             padding: 6rem 2rem 2rem;
             gap: 1.5rem;
             align-items: center;
@@ -1088,48 +1093,10 @@
             display: block;
             color: var(--primary);
             font-weight: 500;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .nav-center {
-                display: none;
             }
             
             .nav-center.mobile-active {
                 display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
-            }
-            
-            .property-nav {
-                display: none;
-            }
-            
-            .properties-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            
-            .property-showcase {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .property-gallery {
-                position: static;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
                 font-size: 3rem;
             }
             
@@ -1174,7 +1141,7 @@
     <header>
         <nav>
             <div class="nav-container">
-                <div class="logo">LTE <span>apartments</span></div>
+                <a href="index.html" class="logo-link"><div class="logo">LTE <span>apartments</span></div></a>
                 <ul class="nav-center">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#properties">Properties</a></li>
@@ -1939,24 +1906,36 @@
             });
         });
 
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - MUST BE ON EVERY PAGE
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navCenter = document.querySelector('.nav-center');
-        const header = document.querySelector('header');
 
         if (mobileMenuBtn && navCenter) {
-            mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 this.classList.toggle('active');
                 navCenter.classList.toggle('mobile-active');
                 document.body.style.overflow = navCenter.classList.contains('mobile-active') ? 'hidden' : '';
             });
 
+            // Close menu when clicking any link
             navCenter.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function() {
                     mobileMenuBtn.classList.remove('active');
                     navCenter.classList.remove('mobile-active');
                     document.body.style.overflow = '';
                 });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (navCenter.classList.contains('mobile-active') && 
+                    !navCenter.contains(e.target) && 
+                    !mobileMenuBtn.contains(e.target)) {
+                    mobileMenuBtn.classList.remove('active');
+                    navCenter.classList.remove('mobile-active');
+                    document.body.style.overflow = '';
+                }
             });
         }
 
