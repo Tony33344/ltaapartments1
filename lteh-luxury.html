@@ -924,11 +924,11 @@
             .nav-center {
                 display: none;
             }
-
+            
             .nav-center.mobile-active {
                 display: flex;
             }
-
+            
             .mobile-menu-btn {
                 display: flex;
             }
@@ -1435,7 +1435,7 @@
         }
 
         // Lightbox functionality for gallery images
-        const galleryImages = document.querySelectorAll('.gallery-item img, .gallery-main, .gallery-thumb');
+        const galleryImages = document.querySelectorAll('.gallery-item img, .gallery-item, .gallery-main, .gallery-thumb');
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
         lightbox.innerHTML = `
@@ -1471,7 +1471,11 @@
 
         galleryImages.forEach((img, index) => {
             img.style.cursor = 'pointer';
-            img.addEventListener('click', function() {
+            img.addEventListener('click', function(e) {
+                // Don't open lightbox if clicking thumbnail in property gallery
+                if (e.target.closest('.property-gallery') && e.target.classList.contains('gallery-thumb')) {
+                    return;
+                }
                 const src = this.src || this.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, '');
                 if (src) {
                     currentIndex = index;

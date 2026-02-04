@@ -815,6 +815,14 @@
                 display: none;
             }
             
+            .nav-center.mobile-active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
             .property-nav {
                 display: none;
             }
@@ -905,6 +913,11 @@
                         <a href="highun-luxury.html" class="active">High Q</a>
                     </div>
                     <a href="#booking" class="contact-btn">Contact</a>
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -1251,7 +1264,8 @@
 
     <script>
         // Gallery thumbnail switching
-        document.querySelectorAll('.gallery-thumb').forEach((thumb, index, thumbs) => {
+        const galleryThumbImages = document.querySelectorAll('.gallery-thumb');
+        galleryThumbImages.forEach((thumb, index, thumbs) => {
             thumb.addEventListener('click', function() {
                 thumbs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
@@ -1290,6 +1304,94 @@
             }
             
             lastScroll = currentScroll;
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navCenter = document.querySelector('.nav-center');
+
+        if (mobileMenuBtn && navCenter) {
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navCenter.classList.toggle('mobile-active');
+                document.body.style.overflow = navCenter.classList.contains('mobile-active') ? 'hidden' : '';
+            });
+
+            navCenter.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuBtn.classList.remove('active');
+                    navCenter.classList.remove('mobile-active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Lightbox functionality for gallery images
+        const galleryLightboxImages = document.querySelectorAll('.gallery-item img, .gallery-item, .gallery-main, .gallery-thumb');
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close" aria-label="Close">&times;</button>
+                <button class="lightbox-prev" aria-label="Previous">&#8249;</button>
+                <img src="" alt="Full screen view" class="lightbox-image">
+                <button class="lightbox-next" aria-label="Next">&#8250;</button>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxClose = lightbox.querySelector('.lightbox-close');
+        const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+        const lightboxNext = lightbox.querySelector('.lightbox-next');
+        const lightboxOverlay = lightbox.querySelector('.lightbox-overlay');
+        let currentIndex = 0;
+
+        function openLightbox(src) {
+            lightboxImage.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        const sources = Array.from(galleryLightboxImages).map(el => el.src || el.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, ''));
+
+        galleryLightboxImages.forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                // Don't open lightbox if clicking thumbnail in property gallery
+                if (e.target.closest('.property-gallery') && e.target.classList.contains('gallery-thumb')) {
+                    return;
+                }
+                const src = this.src || this.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, '');
+                if (src) {
+                    currentIndex = index;
+                    openLightbox(src);
+                }
+            });
+        });
+
+        function showIndex(i) {
+            if (!sources.length) return;
+            currentIndex = (i + sources.length) % sources.length;
+            openLightbox(sources[currentIndex]);
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => showIndex(currentIndex - 1));
+        lightboxNext.addEventListener('click', () => showIndex(currentIndex + 1));
+
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showIndex(currentIndex - 1);
+            if (e.key === 'ArrowRight') showIndex(currentIndex + 1);
         });
     </script>
 </body>
