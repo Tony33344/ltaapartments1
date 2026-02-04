@@ -156,6 +156,193 @@
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
         
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Mobile Navigation Menu */
+        .nav-center {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-center.mobile-active {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 1000;
+            padding: 5rem 2rem 2rem;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .nav-center.mobile-active li {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .nav-center.mobile-active a {
+            font-size: 1.5rem;
+            padding: 1rem;
+            display: block;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+        }
+        
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            z-index: 1;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 10;
+            width: 50px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .lightbox-prev {
+                left: 10px;
+            }
+            
+            .lightbox-next {
+                right: 10px;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+            }
+        }
+        
         /* Breadcrumb */
         .breadcrumb {
             background: var(--light);
@@ -716,6 +903,14 @@
                 display: none;
             }
             
+            .nav-center.mobile-active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
             .property-nav {
                 display: none;
             }
@@ -825,6 +1020,11 @@
                         <a href="highun-luxury.html">High Q</a>
                     </div>
                     <a href="#booking" class="contact-btn">Contact</a>
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -997,7 +1197,7 @@
                 </div>
                 <div class="amenity-item">
                     <div class="amenity-icon">
-                        <i class="fas fa-washer"></i>
+<i class="fas fa-tshirt"></i>
                     </div>
                     <div>
                         <h4>Washer & Dryer</h4>
@@ -1272,6 +1472,84 @@
             } else {
                 nav.style.background = 'rgba(255, 255, 255, 0.95)';
                 nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navCenter = document.querySelector('.nav-center');
+
+        if (mobileMenuBtn && navCenter) {
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navCenter.classList.toggle('mobile-active');
+                document.body.style.overflow = navCenter.classList.contains('mobile-active') ? 'hidden' : '';
+            });
+
+            // Close menu when clicking a link
+            navCenter.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuBtn.classList.remove('active');
+                    navCenter.classList.remove('mobile-active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Lightbox functionality for gallery images
+        const galleryImages = document.querySelectorAll('.gallery-item img, .gallery-main, .gallery-thumb');
+        let currentImageIndex = 0;
+
+        // Create lightbox elements
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close" aria-label="Close">&times;</button>
+                <button class="lightbox-prev" aria-label="Previous">&#8249;</button>
+                <img src="" alt="Full screen view" class="lightbox-image">
+                <button class="lightbox-next" aria-label="Next">&#8250;</button>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxClose = lightbox.querySelector('.lightbox-close');
+        const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+        const lightboxNext = lightbox.querySelector('.lightbox-next');
+        const lightboxOverlay = lightbox.querySelector('.lightbox-overlay');
+
+        function openLightbox(src) {
+            lightboxImage.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Add click handlers to gallery images
+        galleryImages.forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                const src = this.src || this.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, '');
+                if (src) {
+                    currentImageIndex = index;
+                    openLightbox(src);
+                }
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', closeLightbox);
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
             }
         });
     </script>
