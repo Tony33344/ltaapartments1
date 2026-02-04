@@ -80,7 +80,7 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -99,7 +99,7 @@
         
         .nav-center {
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
             list-style: none;
         }
         
@@ -107,7 +107,7 @@
             text-decoration: none;
             color: var(--primary);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: color 0.3s ease;
@@ -127,6 +127,24 @@
         
         .nav-center a:hover::after {
             width: 100%;
+        }
+        
+        .nav-center a.book-now-nav {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .nav-center a.book-now-nav::after {
+            display: none;
+        }
+        
+        .nav-center a.book-now-nav:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
         
         .nav-right {
@@ -163,6 +181,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            padding-top: 80px;
         }
         
         .hero-slider {
@@ -201,13 +220,17 @@
         }
         
         .hero-content {
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 2;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 2rem;
             color: white;
             text-align: center;
+            width: 100%;
         }
         
         .hero-badge {
@@ -224,19 +247,25 @@
         }
         
         .hero-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(4rem, 10vw, 8rem);
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
             text-align: center;
+            line-height: 0.9;
+            color: white;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 300;
             margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6);
+            color: white;
         }
         
         .hero-stats {
@@ -1060,12 +1089,12 @@
             <div class="nav-container">
                 <div class="logo">LTE <span>apartments</span></div>
                 <ul class="nav-center">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#hero">Home</a></li>
                     <li><a href="#properties">Properties</a></li>
                     <li><a href="#comparison">Compare</a></li>
                     <li><a href="#amenities">Amenities</a></li>
                     <li><a href="#host">Host</a></li>
-                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#booking" class="book-now-nav">Book Now</a></li>
                 </ul>
                 <div class="nav-right">
                     <div class="property-nav">
@@ -1080,7 +1109,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-slider">
             <div class="hero-slide" style="background-image: url('images/bigopen/hero1.avif');" onclick="window.location.href='luxury-index.html'">
                 <div class="hero-content">

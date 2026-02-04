@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;900&family=Inter:wght@200;300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -15,12 +16,15 @@
         }
         
         :root {
-            --primary: #1a1a1a;
-            --accent: #c9302c;
+            --primary: #0a0a0a;
             --gold: #d4af37;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --border: #dee2e6;
+            --gold-light: #f4e5c2;
+            --accent: #c9302c;
+            --light: #fafafa;
+            --gray: #888;
+            --border: #e5e5e5;
+            --shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);
         }
         
         body {
@@ -35,30 +39,6 @@
         }
         
         /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            transition: all 0.3s ease;
-        }
-        
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -120,8 +100,22 @@
             transition: width 0.3s ease;
         }
         
-        .nav-center a:hover::after {
-            width: 100%;
+        .nav-center a.book-now-nav {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .nav-center a.book-now-nav::after {
+            display: none;
+        }
+        
+        .nav-center a.book-now-nav:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
         
         .nav-links {
@@ -226,7 +220,7 @@
         .contact-btn {
             background: var(--gold);
             color: var(--primary);
-            padding: 0.5rem 1.5rem;
+            padding: 0.75rem 2rem;
             border: none;
             border-radius: 50px;
             font-weight: 600;
@@ -235,7 +229,7 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            font-size: 0.75rem;
+            font-size: 0.875rem;
         }
         
         .contact-btn:hover {
@@ -249,6 +243,9 @@
             height: 100vh;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
         }
         
         .hero-slider {
@@ -279,17 +276,17 @@
         }
         
         .hero-content {
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 2;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 2rem;
             color: white;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
+            width: 100%;
         }
         
         .hero-badge {
@@ -310,18 +307,21 @@
             font-family: 'Bebas Neue', cursive;
             font-size: clamp(4rem, 10vw, 6rem);
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
             line-height: 0.9;
+            color: white;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 300;
             margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6);
+            color: white;
         }
         
         .hero-features {
@@ -600,14 +600,6 @@
                 font-size: 1.5rem;
             }
             
-            .contact-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.75rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
             
             .hero-title {
                 font-size: 2.5rem;
@@ -670,29 +662,18 @@
     </style>
 </head>
 <body>
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <div class="breadcrumb-container">
-            <a href="index.html">Home</a>
-            <span class="separator">/</span>
-            <a href="index.html#properties">Properties</a>
-            <span class="separator">/</span>
-            <span class="current">Big Open Apartment</span>
-        </div>
-    </div>
-
     <!-- Header & Navigation -->
     <header>
         <nav>
             <div class="nav-container">
                 <div class="logo">LTE <span>apartments</span></div>
                 <ul class="nav-center">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#hero">Home</a></li>
                     <li><a href="#overview">Overview</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#amenities">Amenities</a></li>
                     <li><a href="#host">Host</a></li>
-                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#booking" class="book-now-nav">Book Now</a></li>
                 </ul>
                 <div class="nav-right">
                     <div class="property-nav">
