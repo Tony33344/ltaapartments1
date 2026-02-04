@@ -361,6 +361,20 @@
             color: var(--primary);
         }
         
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-subtitle {
+            color: var(--gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
         /* Property Info */
         .property-info-grid {
             display: grid;
@@ -519,26 +533,47 @@
         }
         
         /* Amenities */
-        .amenities {
+        .amenities-section {
             background: var(--light);
         }
         
         .amenities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
             margin-top: 3rem;
         }
         
-        .amenity {
+        .amenity-item {
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .amenity-item:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
         }
         
         .amenity-icon {
             font-size: 1.5rem;
-            color: var(--accent);
+            color: var(--gold);
+        }
+        
+        .amenity-item h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        
+        .amenity-item p {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin: 0;
         }
         
         /* Reviews */
@@ -881,9 +916,12 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section gallery">
+    <section id="gallery" class="section amenities-section">
         <div class="container">
-            <h2 class="section-title">Explore Your Space</h2>
+            <div class="section-header">
+                <div class="section-subtitle">Photo Gallery</div>
+                <h2 class="section-title">Explore Your Space</h2>
+            </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="images/bigopen/hero1.avif" alt="Living Room">
@@ -914,57 +952,102 @@
     </section>
 
     <!-- Amenities Section -->
-    <section id="amenities" class="section amenities">
+    <section id="amenities" class="section">
         <div class="container">
-            <h2 class="section-title">Premium Amenities</h2>
+            <div class="section-header">
+                <div class="section-subtitle">Luxury Included</div>
+                <h2 class="section-title">Apartment Amenities</h2>
+            </div>
             <div class="amenities-grid">
-                <div class="amenity">
-                    <span class="amenity-icon">🍳</span>
-                    <span>Fully Equipped Kitchen</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h4>Fully Equipped Kitchen</h4>
+                        <p>American style fridge</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🌐</span>
-                    <span>High Speed WiFi</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div>
+                        <h4>High-Speed WiFi</h4>
+                        <p>Free throughout</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🚗</span>
-                    <span>Free Private Parking</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div>
+                        <h4>Cable TV</h4>
+                        <p>Entertainment included</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">📺</span>
-                    <span>Cable TV</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div>
+                        <h4>Air Conditioning</h4>
+                        <p>Climate control</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🌡️</span>
-                    <span>Air Conditioning</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-washer"></i>
+                    </div>
+                    <div>
+                        <h4>Washer & Dryer</h4>
+                        <p>In building</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🧺</span>
-                    <span>Washer & Dryer</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div>
+                        <h4>Free Parking</h4>
+                        <p>On premises</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🔌</span>
-                    <span>EV Charger</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4>EV Charger</h4>
+                        <p>Electric vehicle</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🏢</span>
-                    <span>Dedicated Workspace</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-dog"></i>
+                    </div>
+                    <div>
+                        <h4>Pet Friendly</h4>
+                        <p>All pets welcome</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🐕</span>
-                    <span>Pets Welcome</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div>
+                        <h4>Garden Access</h4>
+                        <p>Private garden</p>
+                    </div>
                 </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🔑</span>
-                    <span>Self Check-in</span>
-                </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🌿</span>
-                    <span>Garden Access</span>
-                </div>
-                <div class="amenity">
-                    <span class="amenity-icon">🔥</span>
-                    <span>BBQ Grill</span>
+                <div class="amenity-item">
+                    <div class="amenity-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div>
+                        <h4>BBQ Grill</h4>
+                        <p>Outdoor cooking</p>
+                    </div>
                 </div>
             </div>
         </div>

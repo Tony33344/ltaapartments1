@@ -623,6 +623,20 @@
             border-bottom: 1px solid var(--border);
         }
         
+        .gallery-item {
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
         .bentral-widget-container {
             background: white;
             border-radius: 16px;
@@ -919,12 +933,12 @@
                 <h2 class="section-title">Explore The Space</h2>
             </div>
             <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
-                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/kitchen.jpg');"></div>
-                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/bedroom1.avif');"></div>
-                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/bathroom.jpg');"></div>
-                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/livingroom all.jpg');"></div>
-                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/kitchen + table.avif');"></div>
-                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;" style="background-image: url('images/highun/bedroom2.avif');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center; background-image: url('images/highun/kitchen.jpg');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center; background-image: url('images/highun/bedroom1.avif');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center; background-image: url('images/highun/bathroom.jpg');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center; background-image: url('images/highun/livingroom all.jpg');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center; background-image: url('images/highun/kitchen + table.avif');"></div>
+                <div class="gallery-item" style="height: 250px; border-radius: 12px; overflow: hidden; background-size: cover; background-position: center; background-image: url('images/highun/bedroom2.avif');"></div>
             </div>
         </div>
     </section>
