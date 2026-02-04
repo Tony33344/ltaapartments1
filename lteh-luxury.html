@@ -596,6 +596,33 @@
             color: var(--primary);
         }
         
+        /* Location */
+        .location {
+            background: var(--light);
+        }
+        
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .location-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .location-highlights {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .location-highlights li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
         .bentral-widget-container {
             background: white;
             border-radius: 16px;
@@ -1067,6 +1094,33 @@
                 <div class="bentral-widget-container">
                     <h4>Complete Your Reservation</h4>
                     <p><em>Add LTE High booking widget code here</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section location">
+        <div class="container">
+            <h2 class="section-title">Perfect Location</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Discover Maribor</h3>
+                    <p>Our apartment offers the perfect base to explore Maribor and the surrounding region. Enjoy the convenience of city living with the peace of a residential area.</p>
+                    
+                    <ul class="location-highlights">
+                        <li>📍 20m to bus stop</li>
+                        <li>🏙️ 5 minutes to Maribor city center</li>
+                        <li>🎿 15 minutes to Pohorje ski resort</li>
+                        <li>🍷 Close to renowned wine regions</li>
+                        <li>🛒 2 min to shop, 15 min by foot to supermarket</li>
+                        <li>🍕 200m to nice restaurant</li>
+                    </ul>
+                    
+                    <p>Host Jernej can help you plan your trip with recommendations for the best restaurants, bars, clubs, and attractions in the area!</p>
+                </div>
+                <div>
+                    <img src="images/ltehigh/garden.avif" alt="Location View" style="width: 100%; border-radius: 12px;">
                 </div>
             </div>
         </div>

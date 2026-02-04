@@ -361,6 +361,102 @@
             color: var(--primary);
         }
         
+        /* Property Info */
+        .property-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        
+        .property-description h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .property-description p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .property-highlights {
+            margin: 3rem 0;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .highlight-icon i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .highlight-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .highlight-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Gallery */
+        .property-gallery {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .gallery-main {
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .gallery-thumb {
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-thumb:hover,
+        .gallery-thumb.active {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+        
         /* About Section */
         .about {
             background: var(--light);
@@ -717,31 +813,56 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
+    <!-- Property Overview -->
+    <section id="overview" class="section">
         <div class="container">
-            <h2 class="section-title">Your Perfect Maribor Getaway</h2>
-            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                Experience luxury and comfort in our spacious 90m² apartment, perfectly designed for up to 7+1 guests. 
-                Enjoy our beautiful terrace with grill, children's playground, and self-catering garden. 
-                Located just 5 minutes from Maribor city center and 15 minutes from Pohorje ski resort.
-            </p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏠</div>
-                    <h3>LTE <span>apartments</span></h3>
-                    <p>90m² of beautifully designed space with modern amenities and comfortable furnishings</p>
+            <div class="property-info-grid">
+                <div class="property-description">
+                    <h3>Big Open Apartment</h3>
+                    <p>Welcome to our spacious 90m² luxury apartment, perfectly designed for up to 7+1 guests. Enjoy self-check-in, adjustable lighting, and cozy bedrooms. Experience our beautiful terrace with grill, children's playground, and self-catering garden. Free private parking and high-speed WiFi ensure your comfort.</p>
+                    
+                    <div class="property-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Spacious Living</h4>
+                                <p>90m² of beautifully designed space with 36cm high diamond 7-zone premium mattress ensuring your best rest</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Premium Kitchen</h4>
+                                <p>Fully equipped modern kitchen with premium appliances, american style fridge, and elegant finishes</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Perfect Location</h4>
+                                <p>Near vineyards, 5 min to city center, 15 min to Pohorje with free private parking and easy highway access</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌿</div>
-                    <h3>Premium Comfort</h3>
-                    <p>36cm high diamond 7-zone mattress ensuring your best rest after a day of exploration</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🍷</div>
-                    <h3>Perfect Location</h3>
-                    <p>Near vineyards, 5 min to city center, 15 min to Pohorje with free private parking</p>
+                <div class="property-gallery">
+                    <div class="gallery-main" style="background-image: url('images/bigopen/hero1.avif');"></div>
+                    <div class="gallery-thumbnails">
+                        <div class="gallery-thumb active" style="background-image: url('images/bigopen/hero1.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero2.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero3.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero4 bedroom 1 36 cm high, diamond 7 cons 5 stars mattress.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero4 bedroom 2.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero bathroom.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero garden.avif');"></div>
+                        <div class="gallery-thumb" style="background-image: url('images/bigopen/hero garden 2.avif');"></div>
+                    </div>
                 </div>
             </div>
         </div>
